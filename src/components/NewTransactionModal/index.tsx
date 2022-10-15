@@ -1,4 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
+
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 
 import * as Styled from "./styles";
@@ -20,12 +21,12 @@ const NewTransactionModal = () => {
           <input type="text" placeholder="Categoria" required />
 
           <Styled.TransactionType>
-            <Styled.TransactionTypeButton variant="income">
+            <Styled.TransactionTypeButton variant="income" value='income'>
               <ArrowCircleUp size={24}/>
               Entrada
             </Styled.TransactionTypeButton>
 
-            <Styled.TransactionTypeButton variant='outcome'>
+            <Styled.TransactionTypeButton variant='outcome' value='outcome'>
               <ArrowCircleDown size={24}/>
               Saída
             </Styled.TransactionTypeButton>
