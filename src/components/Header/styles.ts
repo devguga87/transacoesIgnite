@@ -19,7 +19,7 @@ export const Image = styled.img`
   max-width: 172px;
 `
 
-export const Button  = styled.button`
+export const NewTransactionButton  = styled.button`
   width: 152px;
   height: 50px;
   background:${props => props.theme['green-500']};
