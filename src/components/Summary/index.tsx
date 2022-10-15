@@ -21,7 +21,7 @@ const Summary = () => {
         <strong>R$17.400,00</strong>
       </Styled.SummaryCard>
 
-      <Styled.SummaryCard  variant='green'>
+      <Styled.SummaryCard variant='green'>
         <header>
           <span>Total</span>
           <CurrencyDollar size={32} color="#fff"/>
