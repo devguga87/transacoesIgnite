@@ -1,9 +1,8 @@
-import React from 'react'
-
 import * as Styled from './styles'
 
 import logoImage from '../../assets/img/logo-dt.svg'
 import  * as Dialog from '@radix-ui/react-dialog'
+import NewTransactionModal from '../NewTransactionModal'
 
 const Header = () => {
   return (
@@ -16,14 +15,7 @@ const Header = () => {
             <Styled.NewTransactionButton>Nova Transação</Styled.NewTransactionButton>
           </Dialog.Trigger>
 
-          <Dialog.Portal>
-            <Dialog.Overlay></Dialog.Overlay>
-            <Dialog.Content>
-              <Dialog.Title>Nova Transação</Dialog.Title>
-
-              <Dialog.Close />
-            </Dialog.Content>
-          </Dialog.Portal>
+          <NewTransactionModal/>
         </Dialog.Root>
 
       </Styled.Content>
