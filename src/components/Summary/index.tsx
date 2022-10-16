@@ -7,17 +7,21 @@ import { TransactionContext } from '../../context/transactions'
 const Summary = () => {
   const {transactions} = useContext(TransactionContext)
 
-  const entradas = transactions
-    .filter(transaction => transaction.type === 'income')
-    .map(transaction => transaction.price)
-    .reduce((a,b)=>a+b,0)
+  const summary = transactions.reduce((acc, transaction)=>{
+    if(transaction.type === 'income'){
+      acc.income += transaction.price
+      acc.total += transaction.price
+    } else {
+      acc.outcome += transaction.price
+      acc.total -= transaction.price
+    }
 
-  const saidas = transactions
-    .filter(transaction => transaction.type ==='outcome')
-    .map(transactions => transactions.price)
-    .reduce((a,b)=>a+b,0)
-
-  const total = entradas - saidas
+    return acc
+  }, {
+    income:0,
+    outcome:0,
+    total:0
+  })
   
   return (
     <Styled.Container>
@@ -26,7 +30,7 @@ const Summary = () => {
           <span>Entradas</span>
           <ArrowCircleUp size={32} color="#00b37e"/>
         </header>
-        <strong>{entradas}</strong>
+        <strong>{summary.income}</strong>
       </Styled.SummaryCard>
 
       <Styled.SummaryCard>
@@ -34,7 +38,7 @@ const Summary = () => {
           <span>Saídas</span>
           <ArrowCircleDown size={32} color="#f75A68"/>
         </header>
-        <strong>{saidas}</strong>
+        <strong>{summary.outcome}</strong>
       </Styled.SummaryCard>
 
       <Styled.SummaryCard variant='green'>
@@ -42,7 +46,7 @@ const Summary = () => {
           <span>Total</span>
           <CurrencyDollar size={32} color="#fff"/>
         </header>
-        <strong>{total}</strong>
+        <strong>{summary.total}</strong>
       </Styled.SummaryCard>
     </Styled.Container>
   )
