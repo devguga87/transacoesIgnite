@@ -1,27 +1,13 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from "../../components/Header"
 import Summary from "../../components/Summary"
+import { TransactionContext } from "../../context/transactions"
 import SearchForm from "./components/SearchForm"
 
 import * as Styled from './styles'
 
-interface Transaction {
-  id:number;
-  description:string;
-  type:'income'|'outcome'
-  price:number;
-  category:string;
-  createdAt:string;
-}
-
 const Transactions = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
-
-  useEffect(()=>{
-    fetch('http://localhost:3333/transactions')
-    .then(response => response.json())
-    .then(data => setTransactions(data))
-  },[])
+  const {transactions} = useContext(TransactionContext)
 
   return (
     <div>
@@ -35,7 +21,7 @@ const Transactions = () => {
             return (
               <tr key={transaction.id}>
                 <td width="50%">{transaction.description}</td>
-                <td><Styled.PriceHighlight variant={transaction.type}>R${transaction.price}</Styled.PriceHighlight></td>
+                <td><Styled.PriceHighlight variant={transaction.type}>{transaction.price}</Styled.PriceHighlight></td>
                 <td>{transaction.category}</td>
                 <td>{transaction.createdAt}</td>
               </tr>

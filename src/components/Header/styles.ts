@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.header`
   background-color: ${props => props.theme['gray-900']};
   padding-top:2.5rem 0 7.5rem 0;
+  height: 200px;
 `
 
 export const Content = styled.div`
@@ -12,7 +13,7 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   margin:0 auto;
-  padding:0 1.5rem;
+  padding:30px 1.5rem;
 `
 
 export const Image = styled.img`
