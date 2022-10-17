@@ -3,6 +3,7 @@ import * as Styled from './styles'
 import { ArrowCircleUp, ArrowCircleDown, CurrencyDollar } from 'phosphor-react'
 import { useContext } from 'react'
 import { TransactionContext } from '../../context/transactions'
+import { priceFormatter } from '../../utils/formatter'
 
 const Summary = () => {
   const {transactions} = useContext(TransactionContext)
@@ -30,7 +31,7 @@ const Summary = () => {
           <span>Entradas</span>
           <ArrowCircleUp size={32} color="#00b37e"/>
         </header>
-        <strong>{summary.income}</strong>
+        <strong>{priceFormatter.format(summary.income)}</strong>
       </Styled.SummaryCard>
 
       <Styled.SummaryCard>
@@ -38,7 +39,7 @@ const Summary = () => {
           <span>Saídas</span>
           <ArrowCircleDown size={32} color="#f75A68"/>
         </header>
-        <strong>{summary.outcome}</strong>
+        <strong>{priceFormatter.format(summary.outcome)}</strong>
       </Styled.SummaryCard>
 
       <Styled.SummaryCard variant='green'>
@@ -46,7 +47,7 @@ const Summary = () => {
           <span>Total</span>
           <CurrencyDollar size={32} color="#fff"/>
         </header>
-        <strong>{summary.total}</strong>
+        <strong>{priceFormatter.format(summary.total)}</strong>
       </Styled.SummaryCard>
     </Styled.Container>
   )
